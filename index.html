@@ -55,10 +55,14 @@ xmlhttp.send();
 
 <script>
 function eject() {
-  txt = "<h2>Don't you think it would be a little unsafe if I could do something that low-level <br> merely by you clicking something on my webpage?</h2>PS: Internet explorer with low security settings can be 'a little unsafe', but I did not implement the exploit.";
-  document.getElementById("myDiv").innerHTML=txt;
-  document.getElementById("secretFrame").src = "eject.php";
-  document.getElementById("secretDiv").innerHTML="<br><br><br>How is that CD-Tray looking?";
+  // Commenting out the (server-only) php/vbs exploit
+  //txt = "<h2>Don't you think it would be a little unsafe if I could do something that low-level <br> merely by you clicking something on my webpage?</h2>PS: Internet explorer with low security settings can be 'a little unsafe', but I did not implement the exploit.";
+  //document.getElementById("myDiv").innerHTML=txt;
+  //document.getElementById("secretFrame").src = "eject.php"; -->
+  //document.getElementById("secretDiv").innerHTML="<br><br><br>How is that CD-Tray looking?";
+  
+  // Replace with explanation
+  document.getElementById("secretDiv").innerHTML="When running with php on my laptop, this button would open the server CD-Tray";
 }
 </script>
 
@@ -70,7 +74,7 @@ function eject() {
 <button type="button" onclick="loadXMLDoc('@type')">All</button>
 <button type="button" onclick="loadXMLDoc('@type=\'Animal\'')">Animals</button>
 <button type="button" onclick="loadXMLDoc('@type=\'Food\'')">Food</button>
-<button type="button" onclick="eject()">Eject</button>
+<button type="button" onclick="eject()">Open CD-Tray</button>
 <br>
 <frame id="myFrame"><div id="myDiv"><h2>Choose what you want to see here, by clicking a button.</h2></div></frame>
 <iframe id="secretFrame" width="300" height="40" frameBorder="0"></iframe>
