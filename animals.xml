@@ -5,26 +5,26 @@
 		<age>8</age>
 		<picture>imgs/horse.jpg</picture>
 	</item>
+	<item type="Food">
+		<name>Potato</name>
+		<purchase-date>2014-02-09</purchase-date>
+		<picture>imgs/potato.jpg</picture>
+	</item>
 	<item type="Animal">
 		<name>Steve</name>
 		<legs>8</legs>
 		<age>16</age>
 		<picture>imgs/pig.jpg</picture>
 	</item>
+	<item type="Food">
+		<name>Bread</name>
+		<purchase-date>2014-12-09</purchase-date>
+		<picture>imgs/bread.jpg</picture>
+	</item>
 	<item type="Animal">
 		<name>Squinty</name>
 		<legs>3</legs>
 		<age>7</age>
 		<picture>imgs/squirrel.jpg</picture>
-	</item>
-	<item type="Food">
-		<name>Potato</name>
-		<purchase-date>2014-02-09</purchase-date>
-		<picture>imgs/potato.jpg</picture>
-	</item>
-	<item type="Food">
-		<name>Bread</name>
-		<purchase-date>2014-12-09</purchase-date>
-		<picture>imgs/bread.jpg</picture>
 	</item>
 </items>
