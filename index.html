@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+function loadXMLDoc(xpatharg) {
+var xmlhttp;
+var txt,x,i;
+if (window.XMLHttpRequest)
+  { // code for IE7+, Firefox, Chrome, Opera, and Safari
+    xmlhttp=new XMLHttpRequest();
+  }
+else
+  { // code for IE5 and IE6
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  
+xmlhttp.onreadystatechange=function() {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+	xmlDoc=xmlhttp.responseXML;
+	
+    path="//item[" + xpatharg + "]";
+	
+	txt="";
+	
+	// code for Chrome, Firefox, Opera, etc. (theoretically does not work with IE)
+	if (document.implementation && document.implementation.createDocument)	{
+	  var nodes=xmlDoc.evaluate(path, xmlDoc, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+	  var result=nodes.iterateNext();
+
+	  while (result) {
+	    x = result.childNodes;
+		for (i=0;i<x.length;i++) {
+                  if (x[i].nodeName == "#text"); // for some reason I get some nodes of this name. ignore them.
+		  else if (x[i].nodeName == "picture") {
+		    txt += "<img src='" + x[i].textContent + "'><br>"
+		  }
+		  else {
+		    txt += x[i].nodeName + ": " + x[i].textContent + "<br>";
+		  }
+        }
+		txt += "<br>"
+	    result=nodes.iterateNext();
+	  }
+	}
+	//
+	
+	document.getElementById("myDiv").innerHTML=txt;
+  }
+}
+xmlhttp.open("GET","animals.xml",true);
+xmlhttp.send();
+}
+</script>
+
+<script>
+function eject() {
+  txt = "<h2>Don't you think it would be a little unsafe if I could do something that low-level <br> merely by you clicking something on my webpage?</h2>PS: Internet explorer with low security settings can be 'a little unsafe', but I did not implement the exploit.";
+  document.getElementById("myDiv").innerHTML=txt;
+  document.getElementById("secretFrame").src = "eject.php";
+  document.getElementById("secretDiv").innerHTML="<br><br><br>How is that CD-Tray looking?";
+}
+</script>
+
+
+</head>
+<body>
+
+
+<button type="button" onclick="loadXMLDoc('@type')">All</button>
+<button type="button" onclick="loadXMLDoc('@type=\'Animal\'')">Animals</button>
+<button type="button" onclick="loadXMLDoc('@type=\'Food\'')">Food</button>
+<button type="button" onclick="eject()">Eject</button>
+<br>
+<frame id="myFrame"><div id="myDiv"><h2>Choose what you want to see here, by clicking a button.</h2></div></frame>
+<iframe id="secretFrame" width="300" height="40" frameBorder="0"></iframe>
+
+</body>
+</html>
